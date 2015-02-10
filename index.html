@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="CSV Load, Sort, Report : Scripts to Load, Sort, and Report on a CSV file">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>CSV Load, Sort, Report</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/jasonrdsouza/csv-lsr">View on GitHub</a>
+
+          <h1 id="project_title">CSV Load, Sort, Report</h1>
+          <h2 id="project_tagline">Scripts to Load, Sort, and Report on a CSV file</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/jasonrdsouza/csv-lsr/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/jasonrdsouza/csv-lsr/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="installation-instructions" class="anchor" href="#installation-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation Instructions</h3>
+
+<p>These scripts simply require <a href="https://www.python.org/">Python</a> to run. They mainly make use of the Python standard library. To use them, simply clone this repository, or download the code above.</p>
+
+<ul>
+<li>The <a href="https://github.com/jasonrdsouza/csv-lsr/blob/master/vanilla_approach.py">vanilla_approach.py</a> script has no external dependancies. </li>
+<li>The <a href="https://github.com/jasonrdsouza/csv-lsr/blob/master/database_approach.py">database_approach.py</a> script does not require any external libraries to run, but does require <a href="http://www.sqlite.org/">Sqlite3</a> to be installed in order to use its output. </li>
+<li>The <a href="https://github.com/jasonrdsouza/csv-lsr/blob/master/pandas_approach.ipynb">pandas_approach.ipynb</a> notebook depends on <a href="http://ipython.org/notebook.html">IPython Notebook</a>, and the <a href="http://pandas.pydata.org/">Pandas</a> data analysis library.</li>
+</ul>
+
+<h3>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h3>
+
+<p>This is a very open ended problem, and each approach represents a slightly different mentality towards coming up with a solution, and involves various benefits and tradeoffs, as discussed below.</p>
+
+<h3>
+<a id="vanilla-approach" class="anchor" href="#vanilla-approach" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vanilla Approach</h3>
+
+<p>This is the most straightforward solution to the problem. It is object-oriented, and strives to keep things simple, and solve the problem as specified. The data structures chosen focus specifically on the 2 operations required by the spec, at the expense of flexibility.</p>
+
+<p>Running this script can be done as follows:</p>
+
+<div class="highlight highlight-bash"><pre><span class="pl-k">~</span><span class="pl-k">&gt;</span>  python vanilla_approach.py --data INPUT_CSV_FILE</pre></div>
+
+<p>To see the available command line options, use the <code>-h</code> or <code>--help</code> flag.</p>
+
+<h3>
+<a id="database-approach" class="anchor" href="#database-approach" aria-hidden="true"><span class="octicon octicon-link"></span></a>Database Approach</h3>
+
+<p>This approach is a thin wrapper over <a href="http://www.sqlite.org/">Sqlite3</a>. The rationale here is simple. We want to perform queries, and extract relations from the input data. Instead of maintaining custom software to manage the data, and using Python as a data-munging <a href="http://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>, why not leverage an existing solution (SQL), and enjoy the efficiency and reliability of a mature technology.</p>
+
+<p>This script simply performs the loading of the input data into a sqlite database. It also has helper methods for the 2 operations required by the spec, but the idea is that the underlying sqlite db file can be used directly as well. </p>
+
+<p>Running this script can be done as follows:</p>
+
+<div class="highlight highlight-bash"><pre><span class="pl-k">~</span><span class="pl-k">&gt;</span>  python database_approach.py --db DB_OUTPUT_FILE --data INPUT_CSV_FILE</pre></div>
+
+<p>To see the available command line options, use the <code>-h</code> or <code>--help</code> flag.</p>
+
+<h3>
+<a id="pandas-approach" class="anchor" href="#pandas-approach" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pandas Approach</h3>
+
+<p>Using <a href="http://ipython.org/notebook.html">IPython Notebook</a> allows for easy interaction with, and analysis of the input data. The advantage of this approach is that it is interactive, and very conducive to exploration. Additionally, <a href="http://pandas.pydata.org/">Pandas</a> has a lot of convenience functionality built in, which makes playing with the data almost trivial.</p>
+
+<p>A read-only copy of the notebook can be found <a href="http://nbviewer.ipython.org/github/jasonrdsouza/csv-lsr/blob/master/pandas_approach.ipynb">here</a>. To run the notebook locally, after installing the relevant libraries, run:</p>
+
+<div class="highlight highlight-bash"><pre><span class="pl-k">~</span><span class="pl-k">&gt;</span> ipython notebook pandas_approach.ipynb</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">CSV Load, Sort, Report maintained by <a href="https://github.com/jasonrdsouza">jasonrdsouza</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
